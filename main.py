@@ -39,7 +39,7 @@ def send_email(html_content, subject, to_email, from_email, password):
             server.login(from_email, password)
             server.send_message(msg)
     except Exception as e:
-        print(f"❌ Błąd podczas wysyłki maila: {e}")
+        print(f" Błąd podczas wysyłki maila: {e}")
 
 def process_and_display_data(data, days=7):
     try:
@@ -87,7 +87,7 @@ def process_and_display_data(data, days=7):
                             border-collapse: collapse;
                         }}
                         th, td {{
-                            padding: 5px 8px;
+                            padding: 5px 5px;
                             text-align: center;
                             border: 1px solid #ddd;
                         }}
@@ -97,13 +97,13 @@ def process_and_display_data(data, days=7):
                     </style>
                 </head>
                 <body>
-                    <h2>SEMSTORM Monitoring – Pozycje z ostatnich {days} dni</h2>
+                    <h2>SEMSTORM Monitoring – Pozycje z ostatnich {days} dni dla theprotocol.it</h2>
                     {html_table}
                 </body>
             </html>
             """
 
-            subject = f"SEMSTORM Monitoring – Pozycje z ostatnich {days} dni"
+            subject = f"Pozycje theprotocol.it – Pozycje z ostatnich {days} dni"
             send_email(html_content, subject, email_recipient, email_sender, email_password)
         else:
             print("Brak danych.")
