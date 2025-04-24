@@ -4,7 +4,6 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from datetime import datetime
-
 import os
 
 services_token = os.getenv("SERVICES_TOKEN")
@@ -39,7 +38,6 @@ def send_email(html_content, subject, to_email, from_email, password):
             server.starttls()
             server.login(from_email, password)
             server.send_message(msg)
-            print("✅ Mail wysłany!")
     except Exception as e:
         print(f"❌ Błąd podczas wysyłki maila: {e}")
 
@@ -77,9 +75,36 @@ def process_and_display_data(data, days=7):
             df = df.sort_values(by=["Słowo kluczowe", "Data"])
             pivot_df = df.pivot(index="Słowo kluczowe", columns="Data", values="Pozycja")
             pivot_df = pivot_df.sort_index()
+
             html_table = pivot_df.to_html(border=1, justify="center", classes="styled", index=True)
+
+            html_content = f"""
+            <html>
+                <head>
+                    <style>
+                        table {{
+                            width: 100%;
+                            border-collapse: collapse;
+                        }}
+                        th, td {{
+                            padding: 15px;
+                            text-align: center;
+                            border: 1px solid #ddd;
+                        }}
+                        th {{
+                            background-color: #f2f2f2;
+                        }}
+                    </style>
+                </head>
+                <body>
+                    <h2>SEMSTORM Monitoring – Pozycje z ostatnich {days} dni</h2>
+                    {html_table}
+                </body>
+            </html>
+            """
+
             subject = f"SEMSTORM Monitoring – Pozycje z ostatnich {days} dni"
-            send_email(html_table, subject, email_recipient, email_sender, email_password)
+            send_email(html_content, subject, email_recipient, email_sender, email_password)
         else:
             print("Brak danych.")
     except Exception as e:
