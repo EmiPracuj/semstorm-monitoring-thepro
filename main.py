@@ -87,7 +87,7 @@ def process_and_display_data(data, days=7):
                             border-collapse: collapse;
                         }}
                         th, td {{
-                            padding: 5px 5px;
+                            padding: 5px 2px;
                             text-align: center;
                             border: 1px solid #ddd;
                         }}
@@ -97,7 +97,7 @@ def process_and_display_data(data, days=7):
                     </style>
                 </head>
                 <body>
-                    <h2>SEMSTORM Monitoring – Pozycje z ostatnich {days} dni dla theprotocol.it</h2>
+                    <h2>SEMSTORM Monitoring – Pozycje dla theprotocol.it</h2>
                     {html_table}
                 </body>
             </html>
