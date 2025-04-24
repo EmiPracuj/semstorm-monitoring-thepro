@@ -87,7 +87,7 @@ def process_and_display_data(data, days=7):
                             border-collapse: collapse;
                         }}
                         th, td {{
-                            padding: 15px;
+                            padding: 5px 8px;
                             text-align: center;
                             border: 1px solid #ddd;
                         }}
