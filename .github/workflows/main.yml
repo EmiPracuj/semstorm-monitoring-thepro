@@ -2,7 +2,7 @@ name: SEMSTORM Monitoring
 
 on:
   schedule:
-    - cron: '0 7 * * *'  
+    - cron: '0 5 * * *'  
       timezone: 'Europe/Warsaw'
   workflow_dispatch:
 
