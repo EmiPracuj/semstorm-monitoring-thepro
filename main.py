@@ -103,7 +103,7 @@ def process_and_display_data(data, days=7):
             </html>
             """
 
-            subject = f"Pozycje theprotocol.it – Pozycje z ostatnich {days} dni"
+            subject = f"Pozycje eCommerce– Pozycje z ostatnich {days} dni"
             send_email(html_content, subject, email_recipient, email_sender, email_password)
         else:
             print("Brak danych.")
