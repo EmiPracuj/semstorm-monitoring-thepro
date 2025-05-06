@@ -6,7 +6,7 @@ This Python script:
 - creates a ranking table,
 - sends it via email every morning.
 
-Website: [theprotocol.it](https://theprotocol.it)
+Website: https://theprotocol.it/
 
 ---
 
